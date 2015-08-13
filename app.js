@@ -19,13 +19,13 @@ app.get(['/','/index'], function (req, res) {
 app.use(function(req, res){
     console.log('未处理的路由'+ req.path);
     res.status(404);
-    res.send('404 未找到');
+    res.send('未找到你的路由');
 });
 
 app.use(function(err, req, res, next){
     console.log('检测到未处理的错误: '+ err.message);
     res.status(500);
-    res.send('500 - 服务器错误');
+    res.send('服务器错误');
 });
 
 
