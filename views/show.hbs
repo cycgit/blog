@@ -2,9 +2,30 @@
 <html>
 <head>
     <meta charset="UTF-8">
+
     <title>{{title}}</title>
+    <link rel="stylesheet" href="static/css/marked.css">
 </head>
 <body>
     <h3>hello,{{blog}}</h3>
+    <button id="btn">btn</button>
+    <div id="mark"></div>
+
+    <script src="static/js/marked.js"></script>
+    <script>
+        //document.getElementById('content').innerHTML =  marked('# Marked in browser\n\nRendered by **marked**.');
+        function getmark(){
+            var xhr = new XMLHttpRequest();
+            xhr.open('get','/mark')
+            xhr.onload = function(){
+                document.getElementById('mark').innerHTML =  marked(xhr.responseText);
+            }
+
+            xhr.send();
+
+        }
+        getmark();
+
+    </script>
 </body>
 </html>

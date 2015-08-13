@@ -5,7 +5,7 @@ app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views');
 app.engine('hbs', hbs.__express);
 
-
+var fs = require('fs');
 
 app.use('/static',express.static('static', {Mixed: false}));
 
@@ -15,6 +15,14 @@ app.get(['/','/index'], function (req, res) {
     res.render('show',{title:'handlebar', blog:'blog'});
 });
 
+
+app.get('/mark', function (req, res) {
+
+    var mk = fs.readFileSync('views/blog/hello.md','utf-8');
+    res.type('text/plain');
+    res.send(mk);
+
+});
 
 app.use(function(req, res){
     console.log('未处理的路由'+ req.path);
@@ -27,6 +35,7 @@ app.use(function(err, req, res, next){
     res.status(500);
     res.send('服务器错误');
 });
+
 
 
 

@@ -1,0 +1,19 @@
+#mark blockquote{
+    padding: 0 15px;
+    border-left: 4px solid #ddd;
+    color: #777;
+    margin: 0 0 16px;
+}
+#mark pre{
+    background: #f6f6f6;
+}
+#mark pre code{
+
+}
+#mark code{
+    /*color: #c7254e;*/
+    background-color: #f6f6f6;
+    font-family: Consolas,Menlo,Monaco,"Courier New",monospace;
+    padding: 2px 4px;
+    font-size: .92857em;
+}
