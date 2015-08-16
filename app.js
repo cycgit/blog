@@ -9,12 +9,16 @@ app.engine('hbs', hbs.__express);
 
 app.use('/static',express.static('static', {Mixed: false}));
 
-app.get(['/','/index'], function (req, res) {
+app.get(['/', '/index', '/home'], function (req, res) {
 
-
-    res.render('show',{title:'handlebar', blog:'blog'});
+    res.render('home',{title:'handlebar', blog:'blog'});
 });
 
+
+app.get('/blog/:t', function(req, res){
+
+	res.render('blog');
+});
 
 app.use(function(req, res){
     console.log('未处理的路由'+ req.path);

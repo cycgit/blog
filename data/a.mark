@@ -1,0 +1,19 @@
+`express` 是nodejs一个很著名的框架。 其地位就有点像`react`在js里面的地位。就算你不打算使用它，也可以学习下，取长补短。express的核心就是**中间件**
+
+
+> 要实现的功能如下
+
+ 1. 创建一个http服务器
+ 2. 能够返回静态文件
+ 3. 能够提供api
+
+```
+var express = require('express');
+var app = express();
+app.use(function(req, res){
+    res.send('hello express!');
+});
+app.listen(8001,function(){
+    console.log('监听8001端口');
+});
+```
