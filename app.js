@@ -1,7 +1,8 @@
 var express = require('express');
 var app = express();
 var hbs = require('hbs');
-var marked = require('marked');
+var d = require('./tem');
+
 app.set('view engine', 'hbs');
 app.set('views', 'views');
 app.engine('hbs', hbs.__express);
@@ -16,20 +17,16 @@ var fs = require('fs');
 
 app.use('/static',express.static('static', {Mixed: false}));
 
-app.get(['/','/index'], function (req, res) {
 
-    var mk = fs.readFileSync('views/blog/hello.md','utf-8');
-    res.render('hd',{title:'handlebar', blog: mk});
+app.get(['/', '/index', '/home'], function (req, res) {
+
+    res.render('show',{title:'handlebar', blog:'blog'});
 });
 
 
+app.get('/blog/:t', function(req, res){
 
-app.get('/mark', function (req, res) {
-
-    var mk = fs.readFileSync('views/blog/hello.md','utf-8');
-    res.type('text/plain');
-    res.send(mk);
-
+	res.render('blog',{mark: d});
 });
 
 app.use(function(req, res){
