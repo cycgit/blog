@@ -15,7 +15,8 @@ hbs.registerPartials('views/blog');
 
 var fs = require('fs');
 
-app.use('/static',express.static('static', {Mixed: false}));
+app.use(['/static','/favicon.ico'],express.static('static', {Mixed: false}));
+
 
 
 app.get(['/', '/index', '/home'], function (req, res) {
