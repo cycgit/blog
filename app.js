@@ -21,7 +21,35 @@ app.use(['/static','/favicon.ico'],express.static('static', {Mixed: false}));
 
 app.get(['/', '/index', '/home'], function (req, res) {
 
-    res.render('show',{title:'handlebar', blog:'blog'});
+    res.render('home');
+});
+
+app.get('/send', function (req, res) {
+
+
+
+
+
+});
+
+app.get('/json', function (req, res) {
+
+    var data = {msg: 'get请求'};
+
+    res.json(data)
+});
+
+app.post('/json', function(req, res){
+
+    var data = {msg: 'post请求'};
+
+    res.json(data);
+
+});
+
+app.use('/header', function (req, res) {
+
+    res.json(req.headers);
 });
 
 

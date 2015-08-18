@@ -1,4 +1,22 @@
 .com-footer{
     background-color: #f9f9f9;
+}
+.blog-header{
+    position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+.blog-div{
+    height: 540px;
+}
+.blog-header p{
+    color: white;
+}
+.header-wrap{
+    padding: 150px 0;
 
 }
+
