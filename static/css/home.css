@@ -33,4 +33,7 @@ hr.small{
     text-align: center;
     color: #ffffff;
 }
-
+.content{
+    height:90px;
+    padding-top: 20px;
+}
