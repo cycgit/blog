@@ -1,0 +1,36 @@
+
+
+.blog-header{
+    position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+.blog-div{
+    height: 540px;
+}
+.blog-header p{
+    color: white;
+}
+
+.header-wrap{
+    padding: 150px 0;
+}
+@media (max-width: 768px) {
+    .header-wrap {
+        padding: 0;
+    }
+}
+hr.small{
+    color: white;
+    max-width: 100px;
+    border-radius: 4px;
+    border-width: 4px;
+}
+.header-wrap h2{
+    text-align: center;
+    color: #ffffff;
+}
+

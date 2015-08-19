@@ -1,32 +1,10 @@
 .com-navbar{
-    color: #fff;
+    margin-bottom: 0px;
 }
 .com-footer{
     background-color: #f9f9f9;
     border-top: 1px solid #e5e5e5;
     padding: 40px 0;
 }
-.blog-header{
-    position: relative;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
-    margin-bottom: 20px;
-}
-.blog-div{
-    height: 540px;
-}
-.blog-header p{
-    color: white;
-}
 
-.header-wrap{
-    padding: 150px 0;
-}
-@media (max-width: 768px) {
-    .header-wrap {
-        padding: 0;
-    }
-}
 
