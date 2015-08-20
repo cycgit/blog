@@ -35,10 +35,8 @@ hr.small{
     font-size: 50px;
 }
 .content{
-    height: 100px;
-
-}
-.content{
     height:90px;
     padding-top: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
