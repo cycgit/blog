@@ -29,13 +29,16 @@ hr.small{
     border-radius: 4px;
     border-width: 4px;
 }
-.header-wrap h1{
+.header-wrap h2{
     text-align: center;
     color: #ffffff;
-    font-size: 64px;
+    font-size: 50px;
 }
 .content{
     height: 100px;
 
 }
-
+.content{
+    height:90px;
+    padding-top: 20px;
+}

@@ -15,7 +15,7 @@ hbs.registerPartials('views/blog');
 
 var fs = require('fs');
 
-app.use(['/static'],express.static('static', {Mixed: false}));
+app.use('/static',express.static('static', {Mixed: false}));
 app.get('/favicon.ico', function (req, res) {
         var fs = require('fs');
         var data = fs.readFileSync('static/favicon.ico');
