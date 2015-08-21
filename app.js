@@ -7,9 +7,6 @@ app.set('view engine', 'hbs');
 app.set('views', 'views');
 app.engine('hbs', hbs.__express);
 
-hbs.registerHelper('show', function(str) {
-        return marked(str);
-});
 hbs.registerPartials('views/blog');
 
 
@@ -51,7 +48,7 @@ app.use('/header', function (req, res) {
 
 app.get('/blog/:t', function(req, res){
 
-	res.render('blog');
+	res.render('blog',{mark: d});
 
 });
 

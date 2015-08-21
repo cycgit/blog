@@ -1,4 +1,19 @@
-.tempclass{
-    height: 500px;
-    border: 1px solid black;
+.temp-class{
+    margin-bottom: 10px;
+}
+.temp-class img{
+    max-width: 100%;
+}
+
+.author-name{
+    margin-left: 20px;
+}
+.blog-time{
+    margin-top: 13px;
+}
+.blog-info{
+    background: #f6f6f6;
+    border: 1px solid #e1e1e8;
+    padding: 10px;
+    border-radius: 4px;
 }

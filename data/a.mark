@@ -1,5 +1,5 @@
+<h3>express是什么?</h3>
 `express` 是nodejs一个很著名的框架。 其地位就有点像`react`在js里面的地位。就算你不打算使用它，也可以学习下，取长补短。express的核心就是**中间件**
-
 
 > 要实现的功能如下
 
@@ -17,3 +17,49 @@ app.listen(8001,function(){
     console.log('监听8001端口');
 });
 ```
+ok 上述代码就实现功能一。默认监听的本地IP 网址:http://localhost 它对于一切返回值都返回了hello express!
+对比于nodejs的hello world.例子。细心的你会发现少了输入res头的步骤。`res.writeHead(200,xxx)`,没错这是框架已经帮你处理掉的。默认就是**200 text/html**。当然你也可以自定义返回头，res.type()之类,具体请查看api。
+
+```
+var express = require('express');
+var app = express();
+app.use(express.static('static', {Mixed: false}));
+app.use(function(req, res){
+    res.send('hello express!');
+});
+app.listen(8001,function(){
+    console.log('监听8001端口');
+});
+```
+![图片描述][1]
+
+
+  [1]: /static/images/p1.png
+你大概需要这样的文件结构。`express.static`是express4 目前仅保留的中间件,也是目前唯一保留的一个中间件（可见其钢需，与通用）。查看其中源模块是serve-static。小小的一行中间件其实代码量还是很复杂。具体可以看一篇文章nodejs实现静态服务器。很细致全面的说明了一个静态服务器所要做的事情。
+第一个参数'static'是表示静态文件目录名字没有/说明是相对路径哦 '/static'是绝对路径，当你路由写在其他目录里要小心了区分下。
+{Mixed: false}是当路径为'/'返回静态文件下的不返回index.html
+
+```
+var express = require('express');
+var app = express();
+app.use(express.static('static', {Mixed: false}));
+
+app.get('/get',function(req, res){
+    var data = {msg: '这是get'};
+    res.json(data);
+});
+app.get('/post',function(req, res){
+    var data = {msg: '这是post'};
+    res.json(data);
+});
+
+app.use(function(req, res){
+    res.send('hello express!');
+});
+
+
+app.listen(8001,function(){
+    console.log('监听8001端口');
+});
+```
+这样就服务器就提供了两个api接口,地址是'/get'和'/post',返回这时候就是一个json对象。用的方法是res.json()区别于res.send()就是组装成json格式。 至此就完成了三个基本功能。迈出了第一步！
