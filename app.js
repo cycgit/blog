@@ -28,19 +28,11 @@ app.get(['/', '/index', '/home'], function (req, res) {
     res.render('home');
 });
 
-app.get('/send', function (req, res) {
-
-
-
-
-
-});
-
 app.get('/json', function (req, res) {
 
     var data = {msg: 'get请求'};
 
-    res.json(data)
+    res.json(data);
 });
 
 app.post('/json', function(req, res){
@@ -59,7 +51,8 @@ app.use('/header', function (req, res) {
 
 app.get('/blog/:t', function(req, res){
 
-	res.render('blog',{mark: d});
+	res.render('blog');
+
 });
 
 app.use(function(req, res){
