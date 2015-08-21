@@ -47,7 +47,7 @@ app.use('/header', function (req, res) {
 
 
 app.get('/blog/:t', function(req, res){
-
+    console.log('新的访问:' + req.ip);
 	res.render('blog',{mark: d});
 
 });
