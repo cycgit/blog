@@ -56,10 +56,9 @@ app.get('/post',function(req, res){
 app.use(function(req, res){
     res.send('hello express!');
 });
-
-
 app.listen(8001,function(){
     console.log('监听8001端口');
 });
 ```
+
 这样就服务器就提供了两个api接口,地址是'/get'和'/post',返回这时候就是一个json对象。用的方法是res.json()区别于res.send()就是组装成json格式。 至此就完成了三个基本功能。迈出了第一步！
