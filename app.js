@@ -47,10 +47,13 @@ app.use('/header', function (req, res) {
 
 
 app.get('/blog/:t', function(req, res){
-    console.log('新的访问:' + req.ip);
+
+
+
 	res.render('blog',{mark: d});
 
 });
+
 
 app.use(function(req, res){
     console.log('未处理的路由'+ req.path);
