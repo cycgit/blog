@@ -25,8 +25,5 @@ var userSchema = new Schema({
 var Blog = db.model('blog', blogSchema);
 var User = db.model('user', userSchema);
 
-
-
-
 module.exports.Blog = Blog;
 module.exports.User = User;

@@ -1,21 +1,14 @@
 var express = require('express');
 var app = express();
 var hbs = require('hbs');
-var d = require('./tem');
 
 app.set('view engine', 'hbs');
 app.set('views', 'views');
 app.engine('hbs', hbs.__express);
 
-hbs.registerPartials('views/blog');
-
-
-var fs = require('fs');
-
 app.use('/static',express.static('static', {Mixed: false}));
 app.get('/favicon.ico', function (req, res) {
-        var fs = require('fs');
-        var data = fs.readFileSync('static/favicon.ico');
+        var data = require('fs').readFileSync('static/favicon.ico');
         res.end(data);
 });
 
@@ -50,7 +43,7 @@ app.get('/blog/:t', function(req, res){
 
 
 
-	res.render('blog',{mark: d});
+	res.render('blog');
 
 });
 
