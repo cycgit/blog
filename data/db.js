@@ -1,5 +1,8 @@
 var mongoose = require('mongoose');
-var db = mongoose.connect('mongodb://cyc:1@localhost/mydb');
+//var db = mongoose.connect('mongodb://cyc:1@localhost/mydb');
+var db = mongoose.connect('mongodb://cycok.com/mydb');
+
+
 var Schema = mongoose.Schema;
 var blogSchema = new Schema({
     title: String,
@@ -10,14 +13,19 @@ var blogSchema = new Schema({
     key_url: Number
 });
 
+
+
 var userSchema = new Schema({
     id : Number,
     name: String,
+    profile: String,
     head: String
 });
 
 var Blog = db.model('blog', blogSchema);
 var User = db.model('user', userSchema);
+
+
 
 
 module.exports.Blog = Blog;
