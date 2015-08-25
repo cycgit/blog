@@ -1,7 +1,20 @@
 var express = require('express');
 var app = express();
 var hbs = require('hbs');
-var d = require('./tem');
+
+var marked = require('marked');
+var h = require('highlight');
+var db = require('./data/db');
+
+
+marked.setOptions({
+    highlight: function (code) {
+        return h.Highlight(code);
+        //return require('highlight').highlightAuto(code).value;
+    }
+});
+
+
 
 app.set('view engine', 'hbs');
 app.set('views', 'views');
@@ -46,11 +59,22 @@ app.use('/header', function (req, res) {
 });
 
 
-app.get('/blog/:t', function(req, res){
+app.get('/blog/:key', function(req, res){
 
 
+    db.Blog.findOne({key_url:req.param.key},function(err, data1){
 
-	res.render('blog',{mark: d});
+            db.User.findOne({id:data1.auth_id},function(err, data2){
+                    var data = {};
+                    data.auth = data2;
+                    data.blog = data1;
+                    data.blog.content = marked(data.blog.content);
+                    console.log(data2);
+                res.render('blog',data);
+            });
+
+    });
+
 
 });
 

@@ -47,9 +47,9 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="blog-info">
-                    <h1>Express</h1>
+                    <h1>{{blog.title}}</h1>
                     <a><img src="/static/images/cat.jpg" width="40" height="40" class="img-circle"></a>
-                    <a class="text-info author-name">二胖手</a>
+                    <a class="text-info author-name">{{auth.name}}</a>
                     <span class="pull-right text-success blog-time">2015/05/07</span>
                 </div>
             </div>
@@ -63,7 +63,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="temp-class">
-                     {{{ mark }}}
+                     {{{ blog.content }}}
             </div>
         </div>
     </div>
