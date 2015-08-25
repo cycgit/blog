@@ -2,7 +2,10 @@ var mongoose = require('mongoose');
 //var db = mongoose.connect('mongodb://cyc:1@localhost/mydb');
 var db = mongoose.connect('mongodb://cycok.com/mydb');
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> aacb3fc8139ab9224dca89d818d2117c6ffc9d37
 var Schema = mongoose.Schema;
 var blogSchema = new Schema({
     title: String,
