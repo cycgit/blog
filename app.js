@@ -25,12 +25,7 @@ hbs.registerPartials('views/blog');
 
 var fs = require('fs');
 
-app.use('/static',express.static('static', {Mixed: false}));
-app.get('/favicon.ico', function (req, res) {
-        var fs = require('fs');
-        var data = fs.readFileSync('static/favicon.ico');
-        res.end(data);
-});
+app.use(['/static','/favicon.ico/'],express.static('static', {Mixed: false}));
 
 
 app.get(['/', '/index', '/home'], function (req, res) {
@@ -38,32 +33,19 @@ app.get(['/', '/index', '/home'], function (req, res) {
     res.render('home');
 });
 
-app.get('/json', function (req, res) {
-
-    var data = {msg: 'get请求'};
-
-    res.json(data);
-});
-
-app.post('/json', function(req, res){
-
-    var data = {msg: 'post请求'};
-
-    res.json(data);
-
-});
-
-app.use('/header', function (req, res) {
-
-    res.json(req.headers);
-});
 
 
-app.get('/blog/:key', function(req, res){
+app.get('/blog/:key', function(req, res, next){
 
 
     db.Blog.findOne({key_url:req.param.key},function(err, data1){
+            console.log(data1);
+            if(!data1.length){
 
+                next();
+                return;
+
+            }
             db.User.findOne({id:data1.auth_id},function(err, data2){
                     var data = {};
                     data.auth = data2;
@@ -82,7 +64,7 @@ app.get('/blog/:key', function(req, res){
 app.use(function(req, res){
     console.log('未处理的路由'+ req.path);
     res.status(404);
-    res.send('未找到你的路由');
+    res.send('404－未找到');
 });
 
 app.use(function(err, req, res, next){
