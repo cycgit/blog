@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
-//var db = mongoose.connect('mongodb://cyc:1@localhost/mydb');
-var db = mongoose.connect('mongodb://cycok.com/mydb');
+var db = mongoose.connect('mongodb://cyc:1@localhost/mydb');
+//var db = mongoose.connect('mongodb://cycok.com/mydb');
 
 var Schema = mongoose.Schema;
 var blogSchema = new Schema({

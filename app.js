@@ -39,19 +39,15 @@ app.get('/blog/:key', function(req, res, next){
 
 
     db.Blog.findOne({key_url:req.param.key},function(err, data1){
-            console.log(data1);
-            if(!data1.length){
-
+            if(!data1.title){
                 next();
                 return;
-
             }
             db.User.findOne({id:data1.auth_id},function(err, data2){
                     var data = {};
                     data.auth = data2;
                     data.blog = data1;
                     data.blog.content = marked(data.blog.content);
-                    console.log(data2);
                 res.render('blog',data);
             });
 
