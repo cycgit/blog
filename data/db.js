@@ -12,15 +12,17 @@ var blogSchema = new Schema({
     key_url: Number
 });
 
+
+
 var userSchema = new Schema({
     id : Number,
     name: String,
+    profile: String,
     head: String
 });
 
 var Blog = db.model('blog', blogSchema);
 var User = db.model('user', userSchema);
-
 
 module.exports.Blog = Blog;
 module.exports.User = User;

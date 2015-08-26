@@ -3,18 +3,15 @@ var app = express();
 var hbs = require('hbs');
 
 var marked = require('marked');
-var h = require('highlight');
 var db = require('./data/db');
 
 
 marked.setOptions({
     highlight: function (code) {
-        return h.Highlight(code);
+        return require('highlight').Highlight(code);
         //return require('highlight').highlightAuto(code).value;
     }
 });
-
-
 
 app.set('view engine', 'hbs');
 app.set('views', 'views');
@@ -26,7 +23,6 @@ hbs.registerPartials('views/blog');
 var fs = require('fs');
 
 app.use(['/static','/favicon.ico/'],express.static('static', {Mixed: false}));
-
 
 app.get(['/', '/index', '/home'], function (req, res) {
 
@@ -52,7 +48,6 @@ app.get('/blog/:key', function(req, res, next){
             });
 
     });
-
 
 });
 
