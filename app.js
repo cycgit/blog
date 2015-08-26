@@ -16,11 +16,6 @@ app.set('view engine', 'hbs');
 app.set('views', 'views');
 app.engine('hbs', hbs.__express);
 
-var fs = require('fs');
-
-
-
-
 app.use(['/static','/favicon.ico/'],express.static('static', {Mixed: false}));
 app.get(['/', '/index', '/home'], function (req, res) {
 
@@ -46,7 +41,6 @@ app.get('/blog/:key', function(req, res, next){
             });
 
     });
-
 });
 
 
