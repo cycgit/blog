@@ -9,7 +9,6 @@ var db = require('./data/db');
 marked.setOptions({
     highlight: function (code) {
         return require('highlight').Highlight(code);
-        //return require('highlight').highlightAuto(code).value;
     }
 });
 
@@ -17,13 +16,12 @@ app.set('view engine', 'hbs');
 app.set('views', 'views');
 app.engine('hbs', hbs.__express);
 
-hbs.registerPartials('views/blog');
-
-
 var fs = require('fs');
 
-app.use(['/static','/favicon.ico/'],express.static('static', {Mixed: false}));
 
+
+
+app.use(['/static','/favicon.ico/'],express.static('static', {Mixed: false}));
 app.get(['/', '/index', '/home'], function (req, res) {
 
     res.render('home');
