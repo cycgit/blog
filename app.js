@@ -17,11 +17,6 @@ app.set('views', 'views');
 app.engine('hbs', hbs.__express);
 
 app.use(['/static','/favicon.ico/'],express.static('static', {Mixed: false}));
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 3bede325fecb5a30afbc568802b6eaa2893372e5
 app.get(['/', '/index', '/home'], function (req, res) {
 
     res.render('home');
