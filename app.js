@@ -2,14 +2,13 @@ var express = require('express');
 var app = express();
 var hbs = require('hbs');
 
-var marked = require('marked');
+var marked = require('marked'); //mark down
 var db = require('./data/db');
 
 
 marked.setOptions({
     highlight: function (code) {
         return require('highlight').Highlight(code);
-        //return require('highlight').highlightAuto(code).value;
     }
 });
 
@@ -17,12 +16,8 @@ app.set('view engine', 'hbs');
 app.set('views', 'views');
 app.engine('hbs', hbs.__express);
 
-hbs.registerPartials('views/blog');
-
-
-var fs = require('fs');
-
 app.use(['/static','/favicon.ico/'],express.static('static', {Mixed: false}));
+
 
 app.get(['/', '/index', '/home'], function (req, res) {
 
@@ -32,7 +27,6 @@ app.get(['/', '/index', '/home'], function (req, res) {
 
 
 app.get('/blog/:key', function(req, res, next){
-
 
     db.Blog.findOne({key_url:req.param.key},function(err, data1){
             if(!data1.title){
@@ -50,6 +44,7 @@ app.get('/blog/:key', function(req, res, next){
     });
 
 });
+
 
 
 app.use(function(req, res){
