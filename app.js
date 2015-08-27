@@ -4,6 +4,7 @@ var hbs = require('hbs');
 
 var marked = require('marked'); //mark down
 var db = require('./data/db');
+var ftime = require('ftime');
 
 
 marked.setOptions({
@@ -29,6 +30,15 @@ app.get('/blog/:key', function(req, res, next){
 
     //返回文章
     db.Blog.findOne({_id:req.params.key}).populate('auth').exec(function(err, data){
+        if(err){
+            next();
+        }
+        if(!data.content){
+            next();
+            return;
+        }
+
+        data.time = ftime(data.time);
         data.content = marked(data.content);
         res.render('blog', data);
     });
