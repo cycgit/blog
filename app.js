@@ -29,7 +29,6 @@ app.get('/blog/:key', function(req, res, next){
 
     //返回文章
     db.Blog.findOne({_id:req.params.key}).populate('auth').exec(function(err, data){
-
         data.content = marked(data.content);
         res.render('blog', data);
     });
