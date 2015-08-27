@@ -16,7 +16,8 @@ app.set('view engine', 'hbs');
 app.set('views', 'views');
 app.engine('hbs', hbs.__express);
 
-app.use(['/static','/favicon.ico/'],express.static('static', {Mixed: false}));
+app.use(['/static','/favicon.ico'],express.static('static', {Mixed: false}));
+
 app.get(['/', '/index', '/home'], function (req, res) {
 
     res.render('home');
@@ -26,20 +27,13 @@ app.get(['/', '/index', '/home'], function (req, res) {
 
 app.get('/blog/:key', function(req, res, next){
 
-    db.Blog.findOne({key_url:req.param.key},function(err, data1){
-            if(!data1.title){
-                next();
-                return;
-            }
-            db.User.findOne({id:data1.auth_id},function(err, data2){
-                    var data = {};
-                    data.auth = data2;
-                    data.blog = data1;
-                    data.blog.content = marked(data.blog.content);
-                res.render('blog',data);
-            });
+    //返回文章
+    db.Blog.findOne({_id:req.params.key}).populate('auth').exec(function(err, data){
 
+        data.content = marked(data.content);
+        res.render('blog', data);
     });
+
 });
 
 

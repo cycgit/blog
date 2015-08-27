@@ -1,42 +1,39 @@
 var mongoose = require('mongoose');
 //var db = mongoose.connect('mongodb://cyc:1@localhost/mydb');
 mongoose.connect('mongodb://cyc:1@cycok.com/mydb');
+//var fs = require('fs');
+
+//var data = fs.readFileSync('mark/a.mark','utf-8');
 
 var Schema = mongoose.Schema;
 
+
+
 var UserSchema = new Schema({
+        _id: Number,
         name: String,
-        age: Number
-
+        head: String,
+        des: String
 });
+
+
+var BlogSchema = new Schema({
+        _id: Number,
+        title: String,
+        content: String,
+        time: {type:String, default: Date.now()},
+        auth: {type:Number, ref:'user'}
+});
+
+
 var User = mongoose.model('user', UserSchema);
+var Blog = mongoose.model('blog', BlogSchema);
 
-var user = new User({
-    name: '小明',
-    age: 2
-});
-
-
-//var blogSchema = new Schema({
-//    title: String,
-//    second_title: {type: String, default: ""},
-//    content: String,
-//    auth_id: Number,
-//    publish_time: {type: Date, default: Date.now},
-//    key_url: Number
+//
+//Blog.findOne({'title':'Express'}).populate('auth').exec(function(err, data){
+//    console.log(data);
 //});
-//
-//
-//
-//var userSchema = new Schema({
-//    id : Number,
-//    name: String,
-//    profile: String,
-//    head: String
-//});
-//
-//var Blog = db.model('blog', blogSchema);
-//var User = db.model('user', userSchema);
-//
-//module.exports.Blog = Blog;
-//module.exports.User = User;
+
+
+module.exports.Blog = Blog;
+module.exports.User = User;

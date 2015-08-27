@@ -34,7 +34,7 @@ app.listen(8001,function(){
 ![图片描述][1]
 
 
-  [1]: /static/images/p1.png
+  [1]: /static/blog/img/p1.png
 你大概需要这样的文件结构。`express.static`是express4 目前仅保留的中间件,也是目前唯一保留的一个中间件（可见其钢需，与通用）。查看其中源模块是serve-static。小小的一行中间件其实代码量还是很复杂。具体可以看一篇文章nodejs实现静态服务器。很细致全面的说明了一个静态服务器所要做的事情。
 第一个参数'static'是表示静态文件目录名字没有/说明是相对路径哦 '/static'是绝对路径，当你路由写在其他目录里要小心了区分下。
 {Mixed: false}是当路径为'/'返回静态文件下的不返回index.html
