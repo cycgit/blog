@@ -17,10 +17,7 @@ app.set('view engine', 'hbs');
 app.set('views', 'views');
 app.engine('hbs', hbs.__express);
 
-app.use(['/static','/favicon.ico'],function(req,res,next){
-    console.log(req.path);
-    next();
-},express.static('static', {Mixed: false}));
+app.use('/static',express.static('static', {Mixed: false}));
 
 app.get(['/', '/index', '/home'], function (req, res) {
 
@@ -36,7 +33,7 @@ app.get('/blog/:key', function(req, res, next){
         if(err){
             next();
         }
-        if(!data.content){
+        if(!data){
             next();
             return;
         }
@@ -50,7 +47,7 @@ app.get('/blog/:key', function(req, res, next){
 
 
 app.use(function(req, res){
-    console.log('未处理的路由'+ req.path);
+    //console.log('未处理的路由'+ req.path);
     res.status(404);
     res.send('404－未找到');
 });
