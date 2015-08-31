@@ -20,7 +20,6 @@ app.engine('hbs', hbs.__express);
 app.use(['/static','/favicon.ico'],express.static('static', {Mixed: false}));
 
 app.get(['/', '/index', '/home'], function (req, res) {
-
     res.render('home');
 });
 
@@ -33,6 +32,7 @@ app.get('/blog/:key', function(req, res, next){
         if(err){
             next();
         }
+
         if(!data){
             next();
             return;

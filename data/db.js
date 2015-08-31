@@ -1,9 +1,8 @@
 var mongoose = require('mongoose');
-//var db = mongoose.connect('mongodb://cyc:1@localhost/mydb');
-mongoose.connect('mongodb://cyc:1@cycok.com/mydb');
-//var fs = require('fs');
+var url = require('../key').mongoUrl;
 
-//var data = fs.readFileSync('mark/a.mark','utf-8');
+mongoose.connect(url);
+
 
 var Schema = mongoose.Schema;
 
@@ -25,15 +24,8 @@ var BlogSchema = new Schema({
         auth: {type:Number, ref:'user'}
 });
 
-
 var User = mongoose.model('user', UserSchema);
 var Blog = mongoose.model('blog', BlogSchema);
-
-//
-//Blog.findOne({'title':'Express'}).populate('auth').exec(function(err, data){
-//    console.log(data);
-//});
-
 
 module.exports.Blog = Blog;
 module.exports.User = User;
