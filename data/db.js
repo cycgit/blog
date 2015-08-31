@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-//var db = mongoose.connect('mongodb://cyc:1@localhost/mydb');
 var url = require('../key').mongoUrl;
 
 mongoose.connect(url);
@@ -24,8 +23,6 @@ var BlogSchema = new Schema({
         time: {type:String, default: Date.now()},
         auth: {type:Number, ref:'user'}
 });
-
-
 
 var User = mongoose.model('user', UserSchema);
 var Blog = mongoose.model('blog', BlogSchema);
