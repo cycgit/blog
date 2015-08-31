@@ -37,12 +37,17 @@ app.get('/blog/:key', function(req, res, next){
             next();
             return;
         }
-
         data.time = ftime(data.time);
         data.content = marked(data.content);
         res.render('blog', data);
     });
 
+});
+
+app.get('/resume', function (req, res) {
+
+
+    res.render('resume');
 });
 
 
@@ -55,7 +60,7 @@ app.use(function(req, res){
 app.use(function(err, req, res, next){
     console.log('检测到未处理的错误: '+ err.message);
     res.status(500);
-    res.send('服务器错误');
+    res.send(err);
 });
 
 
