@@ -26,14 +26,14 @@ var BlogSchema = new Schema({
 });
 
 
+
 var User = mongoose.model('user', UserSchema);
 var Blog = mongoose.model('blog', BlogSchema);
 
-//
-//Blog.findOne({'title':'Express'}).populate('auth').exec(function(err, data){
-//    console.log(data);
-//});
+Blog.find({},{content:0},function(err, data){
 
+        console.log(data);
+});
 
 module.exports.Blog = Blog;
 module.exports.User = User;
