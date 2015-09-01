@@ -29,6 +29,6 @@ var BlogSchema = new Schema({
 
 var Blog = mongoose.model('blog', BlogSchema);
 
-Blog.update({_id:2},{"$set":{content:data,title:'MobileWeb',time:Date.now()}}, function () {
+Blog.update({_id:2},{"$set":{content:data}}, function () {
     
 });
