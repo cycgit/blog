@@ -1,0 +1,118 @@
+> React是Facebook开源的一个JavaScript类库,用于创建Web用户交互界面。非常适合有大量交互的Web页面。
+
+## React的几大特点 ##
+
+ 1. 组件化开发。
+ 2. 数据绑定视图(单向)。
+ 3. JSX语法。
+ 4. React Native。
+  
+----------
+
+## 下载React ##
+下载react.js
+[点这个就是地址了][1]
+或者用npm install react
+
+
+然后新建一个HTML文件，什么名字无所谓。
+
+----------
+
+```
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>react start</title>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script src="react.min.js"></script>
+    <script src="JSXTransformer.js"></script>
+    <script type="text/jsx">
+      React.render(
+        <h1>Hello, world!</h1>,
+        document.getElementById('example')
+      );
+    </script>
+  </body>
+</html>
+```
+
+
+----------
+很顺利页面就输出了 Hello, world! 
+
+然后我们开始分析了
+
+```
+<script type="text/jsx">
+```
+为虾米 type = text/jsx
+这就是JSX
+> JSX即JavaScript XML, 一种在React组件内部构建标签的类XML语法。 React在不使用JSX的情况下一样可以工作，然后使用JSX可以提高组建的可读性，利于团队合作，因此
+推荐你使用JSX,但是多了一层JSX编译成js的过程。
+
+这时候我们把
+
+```
+<script src="JSXTransformer.js"></script>
+```
+注释掉
+发现页面里面什么都没有了 - - 这就对了
+会想下script标签加上text里面内容就变成了文本了 不执行了~
+那刚才怎么输出呢，肯定和JSXTransformer.js有关咯
+哼，我可是过了四级呢！！ 一看我就明白了这个是个JSX转换器咯.把jsx类型的文本转换成正常的js
+输出 plain javascript对吧  嘿嘿～
+
+这时候把script 的 type去掉  js执行看看
+
+!!报错了   什么鬼![图片描述][2]
+
+确实js这么写 语法都不通过了
+
+JSX通过JSXTransformer.js编译成普通的js就正常执行了.
+**好了着时候开始吐槽了!**
+我明明是来学react 写一个hello world的  为什么多出来一个JSXTransformer啊？
+一点心理准备都没有啊！ 你叫我学我就学？ 这不在我计划之内啊 ，我想一步步来弄啊～。
+能不能只用react.js写一个hello world啊!
+
+## 不使用JSX的情况 ##
+
+```
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>react start</title>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script src="react.min.js"></script>
+<!--    <script src="JSXTransformer.js"></script>-->
+    <script>
+
+        var Hello = React.createClass({
+            render: function(){
+                return (
+                    React.createElement('div',{},'Hello world!')
+                )
+            }
+        })
+        React.render(
+            React.createElement(Hello),
+            document.getElementById('example')
+        );
+
+    </script>
+  </body>
+</html>
+```
+还是用JSX吧  虽然一开始让我用 我是拒绝的，但写了两天发现也习惯了，况且人家是大公司对吧他们这么用一定有他们的道理，以后项目做大，自然会领悟其中的道理。
+
+## API分析 ##
+`React.createClass`作用是创建一个组件,并返回这个组建
+`React.render`是输出组件,第一个参数是组件,第一个参数是组件在页面插入的地址。
+React的主要API 就这两个。 后面React.render可能会分离出来。分为页面DOM渲染以及用于后端渲染的字符串。
+
+  [1]: http://facebook.github.io/react/index.html
+  [2]: /static/blog/img/p5.png

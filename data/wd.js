@@ -5,7 +5,7 @@ mongoose.connect(url);
 
 var fs = require('fs');
 
-var data = fs.readFileSync('./mark/MobileWeb','utf-8');
+var data = fs.readFileSync('./mark/React','utf-8');
 
 var Schema = mongoose.Schema;
 
@@ -29,6 +29,6 @@ var BlogSchema = new Schema({
 
 var Blog = mongoose.model('blog', BlogSchema);
 
-Blog.update({_id:2},{"$set":{content:data}}, function () {
+Blog.update({_id:3},{"$set":{content:data, title:'React', time:Date.now()}}, function () {
     
 });
