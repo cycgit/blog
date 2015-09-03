@@ -16,7 +16,12 @@ var UserSchema = new Schema({
 });
 
 
-
+var typeSchema = new Schema({
+        _id: Number,
+        name: String,
+        des: String, //描述
+        update: String //最近更新
+});
 
 
 var BlogSchema = new Schema({
@@ -29,6 +34,11 @@ var BlogSchema = new Schema({
 
 var User = mongoose.model('user', UserSchema);
 var Blog = mongoose.model('blog', BlogSchema);
+var Type = mongoose.model('type', typeSchema);
+
+
+
 
 module.exports.Blog = Blog;
 module.exports.User = User;
+module.exports.Type = Type;

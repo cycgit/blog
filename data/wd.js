@@ -3,9 +3,6 @@ var url = require('../key').mongoUrl;
 
 mongoose.connect(url);
 
-var fs = require('fs');
-
-var data = fs.readFileSync('./mark/React','utf-8');
 
 var Schema = mongoose.Schema;
 
@@ -19,6 +16,14 @@ var UserSchema = new Schema({
 });
 
 
+var typeSchema = new Schema({
+    _id: Number,
+    name: String,
+    des: String, //描述
+    update: String //最近更新
+});
+
+
 var BlogSchema = new Schema({
     _id: Number,
     title: String,
@@ -27,8 +32,13 @@ var BlogSchema = new Schema({
     auth: {type:Number, ref:'user'}
 });
 
+var User = mongoose.model('user', UserSchema);
 var Blog = mongoose.model('blog', BlogSchema);
+var Type = mongoose.model('type', typeSchema);
 
-Blog.update({_id:3},{"$set":{content:data, title:'React', time:Date.now()}}, function () {
-    
-});
+
+
+
+module.exports.Blog = Blog;
+module.exports.User = User;
+module.exports.Type = Type;
