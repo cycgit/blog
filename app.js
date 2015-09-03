@@ -30,7 +30,7 @@ app.get(['/', '/index', '/home'], function (req, res) {
 
 app.get('/classify/:type', function (req, res) {
 
-
+    res.end(404);
 
 });
 
