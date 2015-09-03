@@ -40,3 +40,11 @@ var Type = mongoose.model('type', typeSchema);
 module.exports.Blog = Blog;
 module.exports.User = User;
 module.exports.Type = Type;
+
+Type.find().sort({_id:1}).limit(6).exec(function(err, data){
+
+    console.log(data);
+});
+//Type.update({_id:5},{$set:{des:'前端自动化工具'}},function(){});
+
+

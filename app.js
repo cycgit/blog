@@ -23,14 +23,19 @@ app.use(['/static','/favicon.ico'],express.static('static', {Mixed: false}));
 
 app.get(['/', '/index', '/home'], function (req, res) {
 
-    db.Type.find(function(err, data){
+    db.Type.find().sort({_id:1}).limit(6).exec(function(err, data){
         res.render('home',{data: data});
     });
 });
 
-app.get('/classify/:type', function (req, res) {
-
-    res.end(404);
+app.get('/classify/:type', function (req, res, next) {
+    db.Type.findOne({key_url:req.params.type},function (err, data) {
+        if(data){
+            res.render('classify',{data:data});
+        }else{
+            next();
+        }
+    });
 
 });
 
