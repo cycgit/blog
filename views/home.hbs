@@ -3,41 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>陈彦成-blog</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="keywords" content="陈彦成,个人博客,个人网站,blog,陈颜成,二胖手" />
-    <meta name="description" content="陈彦成的个人博客" />
-    <link rel="stylesheet" href="/static/css/public/bootstrap.css">
-    <link rel="stylesheet" href="/static/css/public/com.css">
+    {{> head}}
+
     <link rel="stylesheet" href="/static/css/home.css">
 </head>
 <body>
-<div style="display: none">
-    <img src="/static/images/wechat.jpeg">
-</div>
 
-<!--navbar-->
-<nav class="navbar navbar-default com-navbar">
-    <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">陈彦成</a>
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false" aria-controls="navbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="/index">首页</a></li>
-                <li><a href="/resume">作者</a></li>
-                <li><a href="#doc">文章</a></li>
-                <li><a href="#ohter">杂谈</a> </li>
 
-            </ul>
-        </div>
-    </div>
-</nav>
+{{> nav}}
 
 <header class="blog-header" style="background-image: url(/static/images/home-bg.jpg)">
         <div class="container">
@@ -60,100 +33,35 @@
 
 <div class="container">
 
-
-
     <div class="row">
+
+        {{#each data}}
         <div class="col-sm-6 col-lg-4">
             <div class="list-group">
-
                 <a href="/blog/1" class="list-group-item">
-                    <h4 class="list-group-item-heading">Express</h4>
+                    <h4 class="list-group-item-heading">{{ name }}</h4>
                     <div class="content">
                        <p class="list-group-item-text">
-                           基于 Node.js 平台，快速、开放、极简的 web 开发框架。
+                          {{ des }}
                        </p>
+
+                        <p>{{ }}</p>
                     </div>
                 </a>
             </div>
         </div>
+        {{/each}}
 
 
 
-        <div class="col-sm-6 col-lg-4">
-            <div class="list-group">
-                <a href="/blog/2" class="list-group-item">
-                    <h4 class="list-group-item-heading">Mobile Web</h4>
-                    <div class="content">
-                        <p class="list-group-item-text">
-                           构建移动web页面。
-                        </p>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-sm-6 col-lg-4">
-            <div class="list-group">
-                <a href="/blog/3" class="list-group-item">
-                    <h4 class="list-group-item-heading">React</h4>
-                    <div class="content">
-                        <p class="list-group-item-text">
-                            React是Facebook开源的一个JavaScript类库,用于创建Web用户交互界面。非常适合有大量交互的Web页面。
-                        </p>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-sm-6 col-lg-4">
-            <div class="list-group">
-                <a href="/blog/4" class="list-group-item">
-                    <h4 class="list-group-item-heading">《我是路人甲》观后感</h4>
-                    <div class="content">
-                        <p class="list-group-item-text">
-                            很真实,很接地气,故事很流畅的展开,我在影片很多小人物的情节中找到共鸣,感慨导演对人性的准确把握和展示.好片值得欣赏.
-                        </p>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-sm-6 col-lg-4">
-            <div class="list-group">
-                <a href="/blog/5" class="list-group-item">
-                    <h4 class="list-group-item-heading">Node.js</h4>
-                    <div class="content">
-                        <p class="list-group-item-text">
-                            Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications.
-                        </p>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-sm-6 col-lg-4">
-            <div class="list-group">
-                <a href="/blog/6" class="list-group-item">
-                    <h4 class="list-group-item-heading">Grunt or Gulp</h4>
-                    <div class="content">
-                    <p class="list-group-item-text">
-                       前端自动化工具的探索
-                    </p>
-                </div>
-                </a>
-            </div>
-        </div>
+
     </div>
 
 </div>
 
 
-<footer class="com-footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
-                <p class="copyright text-center text-muted">Copyright © Cheng Blog 2015 </p>
-                <p class="copyright text-center text-muted">QQ:34293092 Email:342930982@qq.com</p>
-            </div>
-        </div>
-    </div>
-</footer>
+{{> footer}}
+
 <script src="/static/js/lib/jquery.js"></script>
 <script src="/static/js/lib/bootstrap.js"></script>
 </body>

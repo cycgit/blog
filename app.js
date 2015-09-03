@@ -16,14 +16,23 @@ marked.setOptions({
 app.set('view engine', 'hbs');
 app.set('views', 'views');
 app.engine('hbs', hbs.__express);
+hbs.registerPartials('views/part');
+
 
 app.use(['/static','/favicon.ico'],express.static('static', {Mixed: false}));
 
 app.get(['/', '/index', '/home'], function (req, res) {
-    res.render('home');
+
+    db.Type.find(function(err, data){
+        res.render('home',{data: data});
+    });
 });
 
+app.get('/classify/:type', function (req, res) {
 
+
+
+});
 
 app.get('/blog/:key', function(req, res, next){
 
