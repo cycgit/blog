@@ -1,9 +1,8 @@
+
 var mongoose = require('mongoose');
 var url = require('../key').mongoUrl;
 mongoose.connect(url);
 var Schema = mongoose.Schema;
-
-
 
 var UserSchema = new Schema({
     _id: Number,
@@ -14,7 +13,7 @@ var UserSchema = new Schema({
 
 
 var typeSchema = new Schema({
-    _id: Number,
+    _id: Number, //1js 2mobile 3node 4server 5 tool 6 talk
     key_url:String, //url路径
     name: String,
     des: String, //描述
@@ -28,7 +27,8 @@ var BlogSchema = new Schema({
     title: String,
     content: String,
     time: {type:String, default: Date.now()},
-    auth: {type:Number, ref:'user'}
+    auth: {type:Number, ref:'user'},
+    belong: Number
 });
 
 var User = mongoose.model('user', UserSchema);
@@ -41,10 +41,26 @@ module.exports.Blog = Blog;
 module.exports.User = User;
 module.exports.Type = Type;
 
-Type.find().sort({_id:1}).limit(6).exec(function(err, data){
+function set(Model, select, value){
+    Model.update(select, {$set:value}, function(err,data){console.log(data)});
+}
+
+//Type.find().sort({_id:1}).limit(6).exec(function(err, data){
+//
+//    console.log(data);
+//});
+
+
+Blog.find({},{content:0}, function(err,data){
 
     console.log(data);
 });
+//
+//set(Blog, {_id:1},{belong:3});
+//set(Blog, {_id:2},{belong:2});
+//set(Blog, {_id:3},{belong:1});
+
+
 //Type.update({_id:5},{$set:{des:'前端自动化工具'}},function(){});
 
 

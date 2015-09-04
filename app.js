@@ -6,6 +6,7 @@ var marked = require('marked'); //mark down
 var db = require('./data/db');
 var ftime = require('ftime');
 
+var url_obj = {js:1,mobile:2,node:3,server:4,tool:5, talk:6};
 
 marked.setOptions({
     highlight: function (code) {
@@ -29,13 +30,14 @@ app.get(['/', '/index', '/home'], function (req, res) {
 });
 
 app.get('/classify/:type', function (req, res, next) {
-    db.Type.findOne({key_url:req.params.type},function (err, data) {
-        if(data){
-            res.render('classify',{data:data});
-        }else{
-            next();
-        }
-    });
+    var id = url_obj[req.params.type];
+
+    if(id){
+
+    }else{
+
+        next();
+    }
 
 });
 
