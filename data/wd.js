@@ -51,14 +51,17 @@ function set(Model, select, value){
 //});
 
 
-Blog.find({},{content:0}, function(err,data){
+Blog.find({belong:1},{content:0}, function(err,data){
 
     console.log(data);
 });
-//
-//set(Blog, {_id:1},{belong:3});
-//set(Blog, {_id:2},{belong:2});
-//set(Blog, {_id:3},{belong:1});
+
+
+
+
+//set(Blog, {_id:4},{belong:1});
+//set(Blog, {_id:5},{belong:1});
+//set(Blog, {_id:6},{belong:1});
 
 
 //Type.update({_id:5},{$set:{des:'前端自动化工具'}},function(){});

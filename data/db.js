@@ -28,7 +28,8 @@ var BlogSchema = new Schema({
         title: String,
         content: String,
         time: {type:String, default: Date.now()},
-        auth: {type:Number, ref:'user'}
+        auth: {type:Number, ref:'user'},
+        belong: Number
 });
 
 var User = mongoose.model('user', UserSchema);

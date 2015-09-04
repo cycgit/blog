@@ -34,6 +34,13 @@ app.get('/classify/:type', function (req, res, next) {
 
     if(id){
 
+        db.Blog.find({belong:1},{content:0}, function(err,data){
+            if(err){
+                next();
+
+            }
+            res.render('classify',{data:data});
+        });
     }else{
 
         next();
