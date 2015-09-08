@@ -52,7 +52,7 @@ app.get('/resume', function (req, res) {
 
 
 app.use(function(req, res){
-    //console.log('未处理的路由'+ req.path);
+    console.log('未处理的路由'+ req.path+'ip:'+req.ip);
     res.status(404);
     res.send('404－未找到');
 });
@@ -66,6 +66,6 @@ app.use(function(err, req, res, next){
 
 
 
-app.listen(8001,function(){
-    console.log('监听8001端口');
+app.listen(80,function(){
+    console.log('监听80端口');
 });
