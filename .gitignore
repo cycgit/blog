@@ -12,8 +12,9 @@ node_modules/
 *.log
 *.gz
 
-#webstorm
-#.idea
+# webstorm
+.idea/
+.idea
 
-#static images
+# static images
 static/blog
