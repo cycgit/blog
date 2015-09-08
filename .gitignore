@@ -13,7 +13,7 @@ node_modules/
 *.gz
 
 #webstorm
-.idea
+#.idea
 
 #static images
 static/blog
