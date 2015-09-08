@@ -6,6 +6,7 @@ var marked = require('marked'); //mark down
 var db = require('./data/db');
 var ftime = require('ftime');
 
+var url_obj = {js:1,mobile:2,node:3,server:4,tool:5, talk:6};
 
 marked.setOptions({
     highlight: function (code) {
@@ -16,14 +17,36 @@ marked.setOptions({
 app.set('view engine', 'hbs');
 app.set('views', 'views');
 app.engine('hbs', hbs.__express);
+hbs.registerPartials('views/part');
+
 
 app.use(['/static','/favicon.ico'],express.static('static', {Mixed: false}));
 
 app.get(['/', '/index', '/home'], function (req, res) {
-    res.render('home');
+
+    db.Type.find().sort({_id:1}).limit(6).exec(function(err, data){
+        res.render('home',{data: data});
+    });
 });
 
+app.get('/classify/:type', function (req, res, next) {
+    var id = url_obj[req.params.type];
 
+    if(id){
+
+        db.Blog.find({belong:1},{content:0}, function(err,data){
+            if(err){
+                next();
+
+            }
+            res.render('classify',{data:data});
+        });
+    }else{
+
+        next();
+    }
+
+});
 
 app.get('/blog/:key', function(req, res, next){
 

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>陈彦成-blog</title>
+    {{> head}}
+
+</head>
+<body>
+<div class="container">
+
+    <div class="row">
+
+        {{#each data}}
+            <div class="col-sm-6 col-lg-4">
+                <div class="list-group">
+                    <a href="/classify" class="list-group-item">
+                        <h4 class="list-group-item-heading">{{ title }}</h4>
+                        <div class="content">
+                            <p class="list-group-item-text">
+                                内容
+                            </p>
+
+                            <p></p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        {{/each}}
+
+
+
+
+    </div>
+
+</div>
+
+
+
+</body>
+</html>

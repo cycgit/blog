@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavaScriptLibraryMappings">
+    <file url="file://$PROJECT_DIR$" libraries="{blog node_modules}" />
+    <file url="file://$PROJECT_DIR$/app.js" libraries="{Node.js v0.12.7 Core Modules}" />
+    <file url="file://$PROJECT_DIR$/data/db.js" libraries="{Node.js v0.12.7 Core Modules}" />
+    <file url="file://$PROJECT_DIR$/data/wd.js" libraries="{Node.js v0.12.7 Core Modules}" />
+    <file url="file://$PROJECT_DIR$/my_md/http_request.js" libraries="{Node.js Globals, Node.js v0.12.7 Core Modules}" />
+  </component>
+</project>
